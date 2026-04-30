@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Humanizer
 
 A skill for Claude Code and OpenCode that removes signs of AI-generated writing from text, making it sound more natural and human.
@@ -37,7 +38,6 @@ cp SKILL.md ~/.config/opencode/skills/humanizer/
 ```
 
 > **Note:** OpenCode also scans `~/.claude/skills/` for compatibility, so a single clone into `~/.claude/skills/humanizer/` works for both tools.
-
 ## Usage
 
 ### Claude Code
@@ -196,3 +196,7 @@ Copyright (c) 2025 MENTISERA (SMC-PRIVATE) Limited. All rights reserved.
 ## License
 
 MIT
+=======
+# MENTIS-Write
+MENTIS-Write
+>>>>>>> 92c692b4ec8f5602de68f462efe0927457003185
