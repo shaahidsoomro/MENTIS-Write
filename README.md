@@ -1,6 +1,6 @@
-# MENTIS
+# MENTIS Writer
 
-MENTIS is a strict academic and professional writing refinement skill. It removes weak AI-like writing patterns by improving specificity, argument ownership, source use, sentence rhythm, and paragraph logic.
+MENTIS Writer is a strict academic and professional writing refinement skill. It removes weak AI-like writing patterns by improving specificity, argument ownership, source use, sentence rhythm, and paragraph logic.
 
 It is based on Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup, and extends that guidance with dissertation editing, plagiarism-risk review, Claude/ChatGPT integration, and academic refinement reports.
 
@@ -13,10 +13,12 @@ It is based on Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/W
 - Preserves citations and marks unsupported claims with `[citation needed]`.
 - Provides dissertation-quality revision modes for PhD-level academic writing.
 - Produces optional academic refinement reports with improvement notes, citation warnings, and originality risks.
+- Includes `MENTIS_WRITE_PROMPT_LIBRARY.md`, an integration-ready prompt library for all 118 academic writing skills.
+- Includes `HOW_TO_USE.md`, a practical Claude, ChatGPT, OpenCode, and document workflow guide.
 
 ## Integrity rules
 
-MENTIS is for genuine revision, not concealment.
+MENTIS Writer is for genuine revision, not concealment.
 
 - Do not use it to bypass plagiarism checkers, AI detectors, institutional policies, or academic integrity systems.
 - Do not fabricate citations, page numbers, quotations, references, statistics, or evidence.
@@ -28,15 +30,15 @@ MENTIS is for genuine revision, not concealment.
 ### Claude Code
 
 ```bash
-mkdir -p ~/.claude/skills/MENTIS
-cp SKILL.md ~/.claude/skills/MENTIS/
+mkdir -p ~/.claude/skills/MENTIS-Writer
+cp SKILL.md ~/.claude/skills/MENTIS-Writer/
 ```
 
 ### OpenCode
 
 ```bash
-mkdir -p ~/.config/opencode/skills/MENTIS
-cp SKILL.md ~/.config/opencode/skills/MENTIS/
+mkdir -p ~/.config/opencode/skills/MENTIS-Writer
+cp SKILL.md ~/.config/opencode/skills/MENTIS-Writer/
 ```
 
 OpenCode also scans `~/.claude/skills/`, so installing once into the Claude skills directory may work for both tools.
@@ -46,7 +48,7 @@ OpenCode also scans `~/.claude/skills/`, so installing once into the Claude skil
 ### Claude Code
 
 ```text
-/mentis
+/mentis-writer
 
 [paste your text here]
 ```
@@ -54,7 +56,7 @@ OpenCode also scans `~/.claude/skills/`, so installing once into the Claude skil
 ### OpenCode
 
 ```text
-/mentis
+/mentis-writer
 
 [paste your text here]
 ```
@@ -69,9 +71,9 @@ Please humanize this text:
 
 ## Main modes
 
-MENTIS detects intent from the user's request. If no mode is clear, it uses MENTIS humanizer mode.
+MENTIS Writer detects intent from the user's request. If no mode is clear, it uses MENTIS Writer humanizer mode.
 
-### MENTIS humanizer mode
+### MENTIS Writer humanizer mode
 
 Use for general rewriting, flow improvement, robotic tone removal, and natural prose.
 
@@ -202,7 +204,7 @@ Text:
 
 ## Academic writing skills included
 
-MENTIS includes a 15-part academic writing framework:
+MENTIS Writer includes a 15-part academic writing framework:
 
 1. Argument ownership
 2. Sentence rhythm variation
@@ -222,7 +224,7 @@ MENTIS includes a 15-part academic writing framework:
 
 ## Anti-plagiarism writing skills included
 
-MENTIS also includes a 12-part plagiarism-risk framework:
+MENTIS Writer also includes a 12-part plagiarism-risk framework:
 
 1. Idea ownership
 2. Proper paraphrasing
@@ -248,7 +250,7 @@ Write from your own argument and cite every borrowed idea.
 
 ## LLM weaknesses corrected
 
-MENTIS audits and corrects common LLM writing weaknesses:
+MENTIS Writer audits and corrects common LLM writing weaknesses:
 
 - Predictable sentence structure
 - Generic academic wording
@@ -280,7 +282,7 @@ The skill checks for issues across:
 To match a writer's voice, provide a writing sample:
 
 ```text
-/mentis
+/mentis-writer
 
 Here is a sample of my writing for voice matching:
 [paste 2-3 paragraphs]
@@ -293,14 +295,7 @@ The skill analyzes sentence rhythm, vocabulary, paragraph openings, punctuation 
 
 ## Version history
 
-- `3.6.0` - Added academic refinement report mode.
-- `3.5.0` - Added dissertation advisor mode and PhD-level revision prompt.
-- `3.4.0` - Added LLM weakness correction audit.
-- `3.3.0` - Added anti-plagiarism writing skills and workflow.
-- `3.2.0` - Added academic writing skills to prevent AI-like writing.
-- `3.1.1` - Added AI remover mode.
-- `3.1.0` - Added Claude, ChatGPT, and plagiarism-risk integration modes.
-- `3.0.0` - Expanded strict AI-writing cleanup based on current Wikipedia guidance.
+- `1.0.0` - Initial MENTIS Writer release with AI-style cleanup, dissertation refinement, academic writing skills, anti-plagiarism workflows, and academic refinement reports.
 
 ## References
 
@@ -309,16 +304,18 @@ The skill analyzes sentence rhythm, vocabulary, paragraph openings, punctuation 
 
 ## License
 
-MIT
+Proprietary. All rights reserved.
+
+No permission is granted to copy, modify, publish, distribute, sublicense, sell, host, commercialize, reverse engineer, or create derivative works from MENTIS Writer without prior written permission from MENTISERA Research.
 
 ## Legal
 
-Copyright (c) 2026 MENTISERA (SMC-PRIVATE) Limited. All rights reserved.
+Copyright (c) 2026 MENTISERA Research. All rights reserved.
 
-Designed, developed, and distributed by Mentisera Research Division.
+Designed, developed, and distributed by MENTISERA Research.
 
-Developer: Shahid Hussain Soomro
-Contact: hello@mnetisera.pk
-Website: write.mentisera.pk
+Developer: MENTISERA Research
+Contact: hello@mentisera.pk
+Website: writer.mentsiera.pk
 
-Commercial use of MENTISERA branding, hosted services, or proprietary distribution channels requires explicit permission from MENTISERA.
+Commercial use, redistribution, derivative work, or use of MENTISERA branding, hosted services, or proprietary distribution channels requires explicit written permission from MENTISERA Research.

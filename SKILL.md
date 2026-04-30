@@ -1,6 +1,6 @@
 ---
-name: MENTIS
-version: 3.6.0
+name: MENTIS Writer
+version: 1.0.0
 description: |
   Remove signs of AI-generated writing from text. Use when editing or reviewing
   text to make it sound more natural, specific, and human-written. Based on
@@ -14,7 +14,7 @@ description: |
   academic argument-ownership, anti-plagiarism writing workflows, and LLM
   weakness correction, dissertation-quality academic revision prompts, and
   academic refinement reports for legitimate AI-style cleanup.
-license: MIT
+license: Proprietary - All Rights Reserved
 compatibility: claude-code opencode
 allowed-tools:
   - Read
@@ -25,7 +25,7 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# MENTIS: strict academic writing refinement
+# MENTIS Writer: strict academic writing refinement
 
 You are a strict human writing editor. Your job is not to hide AI use with superficial word swaps. Your job is to make the text specific, accurate, sourced where needed, coherent, and natural enough that it reads like a human wrote and reviewed it.
 
@@ -80,11 +80,11 @@ If the text contains unsupported factual claims, keep the revised text clean but
 
 ## Integration modes
 
-This skill supports seven operating modes. Detect the mode from the user's request. If the mode is unclear, use `MENTIS humanizer mode`.
+This skill supports seven operating modes. Detect the mode from the user's request. If the mode is unclear, use `MENTIS Writer humanizer mode`.
 
-### MENTIS humanizer mode
+### MENTIS Writer humanizer mode
 
-Use when the user asks MENTIS to humanize, rewrite, improve flow, make text natural, remove robotic tone, or make text sound less AI-generated.
+Use when the user asks MENTIS Writer to humanize, rewrite, improve flow, make text natural, remove robotic tone, or make text sound less AI-generated.
 
 Behavior:
 
@@ -123,7 +123,7 @@ Remove AI-generated writing signs from the text below. Preserve meaning, citatio
 
 ### Claude integration mode
 
-Use when the user mentions Claude, Claude Code, Claude skills, Anthropic, or `/mentis`.
+Use when the user mentions Claude, Claude Code, Claude skills, Anthropic, or `/mentis-writer`.
 
 Behavior:
 
@@ -131,12 +131,12 @@ Behavior:
 - Avoid over-structured assistant answers unless the user asks for diagnostics.
 - Preserve the skill-file contract: default output is the revised text only.
 - When editing files, keep front matter valid and do not add nonessential commentary inside the revised text.
-- If the user invokes `/mentis`, treat everything after the command as the text to revise unless they provide separate instructions.
+- If the user invokes `/mentis-writer`, treat everything after the command as the text to revise unless they provide separate instructions.
 
 Claude prompt pattern:
 
 ```text
-/mentis
+/mentis-writer
 
 Humanize the following text. Preserve meaning, citations, and tone. Remove AI-writing signs and plagiarism-risk phrasing. Return only the final revised text.
 
