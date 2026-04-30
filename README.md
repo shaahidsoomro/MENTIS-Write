@@ -1,183 +1,324 @@
+# MENTIS
 
+MENTIS is a strict academic and professional writing refinement skill. It removes weak AI-like writing patterns by improving specificity, argument ownership, source use, sentence rhythm, and paragraph logic.
 
-```bash
-mkdir -p ~/.claude/skills/humanizer
-cp SKILL.md ~/.claude/skills/humanizer/
-```
+It is based on Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup, and extends that guidance with dissertation editing, plagiarism-risk review, Claude/ChatGPT integration, and academic refinement reports.
 
-### OpenCode
+## What it does
 
-Clone directly into OpenCode's skills directory:
+- Removes AI-like phrasing, filler, generic transitions, inflated significance, and promotional wording.
+- Improves academic clarity, coherence, paragraph unity, theoretical precision, and authorial voice.
+- Supports "AI remover" usage for legitimate cleanup of robotic or ChatGPT-style prose.
+- Reviews plagiarism-risk patterns such as close paraphrase, patchwriting, citation stripping, and copied structure.
+- Preserves citations and marks unsupported claims with `[citation needed]`.
+- Provides dissertation-quality revision modes for PhD-level academic writing.
+- Produces optional academic refinement reports with improvement notes, citation warnings, and originality risks.
 
-```bash
-mkdir -p ~/.config/opencode/skills
-git clone https://github.com/blader/humanizer.git ~/.config/opencode/skills/humanizer
-```
+## Integrity rules
 
-Or copy the skill file manually if you already have this repo cloned:
+MENTIS is for genuine revision, not concealment.
 
-```bash
-mkdir -p ~/.config/opencode/skills/humanizer
-> **Note:** OpenCode also scans `~/.claude/skills/` for compatibility, so a single clone into `~/.claude/skills/humanizer/` works for both tools.
-## Usage
+- Do not use it to bypass plagiarism checkers, AI detectors, institutional policies, or academic integrity systems.
+- Do not fabricate citations, page numbers, quotations, references, statistics, or evidence.
+- Preserve the author's meaning, citations, argument, disciplinary framing, and research stance.
+- Cite borrowed ideas. Quote exact wording. Mark unsupported claims.
+
+## Installation
 
 ### Claude Code
 
+```bash
+mkdir -p ~/.claude/skills/MENTIS
+cp SKILL.md ~/.claude/skills/MENTIS/
 ```
-/humanizer
+
+### OpenCode
+
+```bash
+mkdir -p ~/.config/opencode/skills/MENTIS
+cp SKILL.md ~/.config/opencode/skills/MENTIS/
+```
+
+OpenCode also scans `~/.claude/skills/`, so installing once into the Claude skills directory may work for both tools.
+
+## Basic usage
+
+### Claude Code
+
+```text
+/mentis
 
 [paste your text here]
 ```
 
 ### OpenCode
 
-```
-/humanizer
+```text
+/mentis
 
 [paste your text here]
 ```
 
-Or ask the model to humanize text directly in either tool:
+### Natural language
 
-```
-Please humanize this text: [your text]
-```
+```text
+Please humanize this text:
 
-### Voice Calibration
-
-To match your personal writing style, provide a sample of your own writing:
-
-```
-/humanizer
-
-Here's a sample of my writing for voice matching:
-[paste 2-3 paragraphs of your own writing]
-
-Now humanize this text:
-[paste AI text to humanize]
+[paste text]
 ```
 
-The skill will analyze your sentence rhythm, word choices, and quirks, then apply them to the rewrite instead of producing generic "clean" output.
+## Main modes
 
-## Overview
+MENTIS detects intent from the user's request. If no mode is clear, it uses MENTIS humanizer mode.
 
-Based on [Wikipedia's "Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) guide, maintained by WikiProject AI Cleanup. This comprehensive guide comes from observations of thousands of instances of AI-generated text.
+### MENTIS humanizer mode
 
-The skill also includes a final "obviously AI generated" audit pass and a second rewrite, to catch lingering AI-isms in the first draft.
+Use for general rewriting, flow improvement, robotic tone removal, and natural prose.
 
-### Key Insight from Wikipedia
+```text
+Humanize this text. Preserve meaning and citations. Return only the revised version.
 
-> "LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases."
+[paste text]
+```
 
-## 29 Patterns Detected (with Before/After Examples)
+### AI remover mode
 
-### Content Patterns
+Use when the text sounds like ChatGPT or generic AI output.
 
-| # | Pattern | Before | After |
-|---|---------|--------|-------|
-| 1 | **Significance inflation** | "marking a pivotal moment in the evolution of..." | "was established in 1989 to collect regional statistics" |
-| 2 | **Notability name-dropping** | "cited in NYT, BBC, FT, and The Hindu" | "In a 2024 NYT interview, she argued..." |
-| 3 | **Superficial -ing analyses** | "symbolizing... reflecting... showcasing..." | Remove or expand with actual sources |
-| 4 | **Promotional language** | "nestled within the breathtaking region" | "is a town in the Gonder region" |
-| 5 | **Vague attributions** | "Experts believe it plays a crucial role" | "according to a 2019 survey by..." |
-| 6 | **Formulaic challenges** | "Despite challenges... continues to thrive" | Specific facts about actual challenges |
+```text
+AI remover:
 
-### Language Patterns
+Remove AI-generated writing signs from the text below. Preserve meaning, citations, facts, and tone. Do not invent sources or details. Remove robotic phrasing, inflated claims, filler, vague attribution, and mechanical formatting. Return only the final cleaned text.
 
-| # | Pattern | Before | After |
-|---|---------|--------|-------|
-| 7 | **AI vocabulary** | "Actually... additionally... testament... landscape... showcasing" | "also... remain common" |
-| 8 | **Copula avoidance** | "serves as... features... boasts" | "is... has" |
-| 9 | **Negative parallelisms / tailing negations** | "It's not just X, it's Y", "..., no guessing" | State the point directly |
-| 10 | **Rule of three** | "innovation, inspiration, and insights" | Use natural number of items |
-| 11 | **Synonym cycling** | "protagonist... main character... central figure... hero" | "protagonist" (repeat when clearest) |
-| 12 | **False ranges** | "from the Big Bang to dark matter" | List topics directly |
-| 13 | **Passive voice / subjectless fragments** | "No configuration file needed" | Name the actor when it helps clarity |
+[paste text]
+```
 
-### Style Patterns
+### ChatGPT cleanup mode
 
-| # | Pattern | Before | After |
-|---|---------|--------|-------|
-| 14 | **Em dash overuse** | "institutions—not the people—yet this continues—" | Prefer commas or periods |
-| 15 | **Boldface overuse** | "**OKRs**, **KPIs**, **BMC**" | "OKRs, KPIs, BMC" |
-| 16 | **Inline-header lists** | "**Performance:** Performance improved" | Convert to prose |
-| 17 | **Title Case Headings** | "Strategic Negotiations And Partnerships" | "Strategic negotiations and partnerships" |
-| 18 | **Emojis** | "🚀 Launch Phase: 💡 Key Insight:" | Remove emojis |
-| 19 | **Curly quotes** | `said “the project”` | `said “the project”` |
-| 26 | **Hyphenated word pairs** | “cross-functional, data-driven, client-facing” | Drop hyphens on common word pairs |
-| 27 | **Persuasive authority tropes** | "At its core, what matters is..." | State the point directly |
-| 28 | **Signposting announcements** | "Let's dive in", "Here's what you need to know" | Start with the content |
-| 29 | **Fragmented headers** | "## Performance" + "Speed matters." | Let the heading do the work |
+Use for text with ChatGPT-style artifacts such as polite preambles, title-case headings, excessive bolding, generic summaries, and over-balanced paragraphs.
 
-### Communication Patterns
+```text
+Revise the following text so it sounds like careful human writing, not ChatGPT output.
 
-| # | Pattern | Before | After |
-|---|---------|--------|-------|
-| 20 | **Chatbot artifacts** | "I hope this helps! Let me know if..." | Remove entirely |
-| 21 | **Cutoff disclaimers** | "While details are limited in available sources..." | Find sources or remove |
-| 22 | **Sycophantic tone** | "Great question! You're absolutely right!" | Respond directly |
+Rules:
+- Preserve meaning.
+- Preserve citations exactly.
+- Do not invent facts or sources.
+- Remove generic AI phrasing, inflated importance, vague attribution, filler, robotic transitions, and mechanical formatting.
+- Mark unsupported claims as [citation needed].
+- Return only the final revised text.
 
-### Filler and Hedging
+Text:
+[paste text]
+```
 
-| # | Pattern | Before | After |
-|---|---------|--------|-------|
-| 23 | **Filler phrases** | "In order to", "Due to the fact that" | "To", "Because" |
-| 24 | **Excessive hedging** | "could potentially possibly" | "may" |
-| 25 | **Generic conclusions** | "The future looks bright" | Specific plans or facts |
+### Plagiarism-risk reduction mode
 
-## Full Example
+Use for ethical paraphrasing, originality improvement, and source-use review.
 
-**Before (AI-sounding):**
-> Great question! Here is an essay on this topic. I hope this helps!
->
-> AI-assisted coding serves as an enduring testament to the transformative potential of large language models, marking a pivotal moment in the evolution of software development. In today's rapidly evolving technological landscape, these groundbreaking tools—nestled at the intersection of research and practice—are reshaping how engineers ideate, iterate, and deliver, underscoring their vital role in modern workflows.
->
-> At its core, the value proposition is clear: streamlining processes, enhancing collaboration, and fostering alignment. It's not just about autocomplete; it's about unlocking creativity at scale, ensuring that organizations can remain agile while delivering seamless, intuitive, and powerful experiences to users. The tool serves as a catalyst. The assistant functions as a partner. The system stands as a foundation for innovation.
->
-> Industry observers have noted that adoption has accelerated from hobbyist experiments to enterprise-wide rollouts, from solo developers to cross-functional teams. The technology has been featured in The New York Times, Wired, and The Verge. Additionally, the ability to generate documentation, tests, and refactors showcases how AI can contribute to better outcomes, highlighting the intricate interplay between automation and human judgment.
->
-> - 💡 **Speed:** Code generation is significantly faster, reducing friction and empowering developers.
-> - 🚀 **Quality:** Output quality has been enhanced through improved training, contributing to higher standards.
-> - ✅ **Adoption:** Usage continues to grow, reflecting broader industry trends.
->
-> While specific details are limited based on available information, it could potentially be argued that these tools might have some positive effect. Despite challenges typical of emerging technologies—including hallucinations, bias, and accountability—the ecosystem continues to thrive. In order to fully realize this potential, teams must align with best practices.
->
-> In conclusion, the future looks bright. Exciting times lie ahead as we continue this journey toward excellence. Let me know if you’d like me to expand on any section!
+```text
+Rewrite the following text to reduce plagiarism risk ethically.
 
-**After (Humanized):**
-> AI coding assistants can speed up the boring parts of the job. They're great at boilerplate: config files and the little glue code you don't want to write. They can also help you sketch a test, but you still have to read it.
->
-> The dangerous part is how confident the suggestions look. I've accepted code that compiled and passed lint, then discovered later it missed the point because I stopped paying attention.
->
-> If you treat it like autocomplete and review every line, it's useful. If you use it to avoid thinking, it will help you ship bugs faster.
->
-> The only real backstop is tests. Without them, you're mostly judging vibes.
+Rules:
+- Preserve the meaning and argument.
+- Preserve all citations exactly.
+- Do not remove citations.
+- Do not invent sources, facts, quotations, page numbers, or statistics.
+- Do not paraphrase sentence by sentence.
+- Rebuild the structure in original wording.
+- Keep direct quotations in quotation marks.
+- Mark unsupported factual claims as [citation needed].
+- Return only the revised text.
+
+Text:
+[paste text]
+```
+
+### Dissertation advisor mode
+
+Use for PhD-level revision, thesis chapters, proposals, literature reviews, methodology sections, theoretical frameworks, findings, discussions, and conclusions.
+
+```text
+Act as a PhD-level dissertation writing advisor, academic editor, research mentor, and subject-specialist reviewer.
+
+Revise the following text into dissertation-quality academic prose.
+
+Research context:
+- Discipline:
+- Topic:
+- Chapter/section:
+- Research problem:
+- Research questions:
+- Theoretical framework:
+- Methodology:
+- Case:
+- Time period:
+- Main argument:
+
+Requirements:
+1. Preserve the original meaning, argument, evidence, and authorial intent.
+2. Do not invent facts, references, quotations, page numbers, dates, statistics, or authors.
+3. Preserve all existing citations exactly.
+4. If a claim needs evidence, insert [citation needed].
+5. Strengthen clarity, coherence, analytical depth, theoretical precision, and scholarly tone.
+6. Remove generic AI-like phrasing and robotic transitions.
+7. Improve paragraph unity and logical flow.
+8. Use discipline-specific academic language.
+9. Add analytical movement: claim -> context -> evidence -> analysis -> contribution.
+10. Avoid overstatement; use careful academic qualification where needed.
+11. Ensure the paragraph can be defended in a PhD viva.
+12. Do not use decorative language, bullet-heavy prose, or promotional wording.
+
+Text:
+[paste text]
+```
+
+### Academic refinement report mode
+
+Use when you want the revised text plus a short diagnostic report.
+
+```text
+You are an academic writing refinement assistant.
+
+Your role is to improve clarity, coherence, originality, scholarly tone, paragraph flow, citation discipline, and human editorial quality.
+
+Do not help users bypass plagiarism checkers, AI detectors, academic integrity systems, or institutional policies.
+
+Do not fabricate citations, page numbers, quotations, references, statistics, or evidence.
+
+Preserve the author's original meaning, citations, argument, disciplinary framing, and research stance.
+
+If a claim lacks support, insert [citation needed].
+
+Return:
+1. Refined academic version
+2. Key improvements made
+3. Citation and evidence warnings
+4. Originality and source-use risks
+
+Text:
+[paste text]
+```
+
+## Academic writing skills included
+
+MENTIS includes a 15-part academic writing framework:
+
+1. Argument ownership
+2. Sentence rhythm variation
+3. Specificity
+4. Analytical movement
+5. Controlled imperfection
+6. Concrete nouns over abstract filler
+7. Strong topic sentences
+8. Human transitions
+9. Qualification
+10. Comparative framing
+11. Paragraph unity
+12. Source-aware voice
+13. Argumentative verbs
+14. Controlled repetition of key terms
+15. Final human read-aloud revision
+
+## Anti-plagiarism writing skills included
+
+MENTIS also includes a 12-part plagiarism-risk framework:
+
+1. Idea ownership
+2. Proper paraphrasing
+3. Citation discipline
+4. Quotation control
+5. Structural originality
+6. Source synthesis
+7. Note-taking
+8. Patchwriting avoidance
+9. Common knowledge judgment
+10. Self-plagiarism prevention
+11. Evidence integration
+12. Similarity review
+
+Golden rule:
+
+```text
+Do not copy wording.
+Do not copy structure.
+Do not copy ideas without citation.
+Write from your own argument and cite every borrowed idea.
+```
+
+## LLM weaknesses corrected
+
+MENTIS audits and corrects common LLM writing weaknesses:
+
+- Predictable sentence structure
+- Generic academic wording
+- Too much balance and not enough judgment
+- Repetitive transitions
+- Weak authorial voice
+- Lack of theoretical depth
+- Source-stacking
+- Lack of context
+- Over-polished smoothness
+- Unsupported claims
+- No counterargument
+- Mechanical paragraph endings
+
+## AI-writing signs detected
+
+The skill checks for issues across:
+
+- Content: significance inflation, notability padding, vague attribution, superficial analysis, formulaic challenges.
+- Language: AI vocabulary clusters, copula avoidance, negative parallelisms, rule of three, synonym cycling, false ranges.
+- Style: title-case headings, decorative bolding, inline-header lists, em dash overuse, shallow tables, fragmented headers.
+- Communication: chatbot greetings, closing offers, knowledge-cutoff disclaimers, placeholder text.
+- Markup: Markdown leftovers, broken wikitext, citation artifacts, search links, tracking links.
+- Citations: broken links, invalid DOI/ISBN, unsupported sources, source laundering, fake precision.
+- Plagiarism risk: close paraphrase, patchwriting, copied structure, citation stripping, unsupported synthesis.
+
+## Voice calibration
+
+To match a writer's voice, provide a writing sample:
+
+```text
+/mentis
+
+Here is a sample of my writing for voice matching:
+[paste 2-3 paragraphs]
+
+Now revise this text in my style:
+[paste text]
+```
+
+The skill analyzes sentence rhythm, vocabulary, paragraph openings, punctuation habits, transitions, and formality before revising.
+
+## Version history
+
+- `3.6.0` - Added academic refinement report mode.
+- `3.5.0` - Added dissertation advisor mode and PhD-level revision prompt.
+- `3.4.0` - Added LLM weakness correction audit.
+- `3.3.0` - Added anti-plagiarism writing skills and workflow.
+- `3.2.0` - Added academic writing skills to prevent AI-like writing.
+- `3.1.1` - Added AI remover mode.
+- `3.1.0` - Added Claude, ChatGPT, and plagiarism-risk integration modes.
+- `3.0.0` - Expanded strict AI-writing cleanup based on current Wikipedia guidance.
 
 ## References
 
-- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) - Primary source
-- [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) - Maintaining organization
-
-## Version History
-
-- **2.5.1** - Added a passive-voice / subjectless-fragment rule, raising the total to 29 patterns
-- **2.5.0** - Added patterns for persuasive framing, signposting, and fragmented headers; expanded negative parallelisms to cover tailing negations; tightened wording around em dash overuse; fixed frontmatter wording to use "filler phrases"
-- **2.4.0** - Added voice calibration: match the user's personal writing style from samples
-- **2.3.0** - Added pattern #25: hyphenated word pair overuse
-- **2.2.0** - Added a final "obviously AI generated" audit + second-pass rewrite prompts
-- **2.1.1** - Fixed pattern #18 example (curly quotes vs straight quotes)
-- **2.1.0** - Added before/after examples for all 24 patterns
-- **2.0.0** - Complete rewrite based on raw Wikipedia article content
-- **1.0.0** - Initial release
-
-## Copyright
-
-Copyright (c) 2025 MENTISERA (SMC-PRIVATE) Limited. All rights reserved.
+- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
+- [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup)
 
 ## License
 
 MIT
-=======
-# MENTIS-Write
-MENTIS-Write
->>>>>>> 92c692b4ec8f5602de68f462efe0927457003185
+
+## Legal
+
+Copyright (c) 2026 MENTISERA (SMC-PRIVATE) Limited. All rights reserved.
+
+Designed, developed, and distributed by Mentisera Research Division.
+
+Developer: Shahid Hussain Soomro
+Contact: hello@mnetisera.pk
+Website: write.mentisera.pk
+
+Commercial use of MENTISERA branding, hosted services, or proprietary distribution channels requires explicit permission from MENTISERA.

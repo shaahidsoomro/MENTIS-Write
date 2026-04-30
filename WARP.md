@@ -3,57 +3,73 @@
 This file provides guidance to WARP (warp.dev) when working with code in this repository.
 
 ## What this repo is
-This repository is a **Claude Code skill** implemented entirely as Markdown.
 
-The "runtime" artifact is `SKILL.md`: Claude Code reads the YAML frontmatter (metadata + allowed tools) and the prompt/instructions that follow.
+This repository contains **MENTIS**, a Claude Code/OpenCode skill implemented entirely as Markdown.
 
-`README.md` is for humans: installation, usage, and a compact overview of the patterns.
+The runtime artifact is `SKILL.md`: Claude Code reads the YAML front matter, including metadata, allowed tools, and the prompt/instructions that follow.
 
-## Key files (and how they relate)
+`README.md` is for humans: installation, usage, modes, academic writing skills, anti-plagiarism workflows, and version history.
+
+## Key files
+
 - `SKILL.md`
-  - The actual skill definition.
-  - Starts with YAML frontmatter (`---` … `---`) containing `name`, `version`, `description`, and `allowed-tools`.
-  - After the frontmatter is the editor prompt: the canonical, detailed pattern list with examples.
+  - The actual MENTIS skill definition.
+  - Starts with YAML front matter containing `name`, `version`, `description`, and `allowed-tools`.
+  - Contains the canonical prompt, operating modes, academic writing skills, plagiarism-risk guidance, and AI-writing pattern checks.
 - `README.md`
-  - Installation and usage instructions.
-  - Contains a summarized "25 patterns" table and a short version history.
+  - Human-facing installation and usage guide.
+  - Must stay consistent with the current `SKILL.md` version.
+- `LICENSE`
+  - MIT license.
 
-When changing behavior/content, treat `SKILL.md` as the source of truth, and update `README.md` to stay consistent.
+When changing behavior or content, treat `SKILL.md` as the source of truth and update `README.md` to stay consistent.
 
 ## Common commands
-### Install the skill into Claude Code
-Recommended (clone directly into Claude Code skills directory):
+
+### Install MENTIS into Claude Code
+
 ```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/blader/humanizer.git ~/.claude/skills/humanizer
+mkdir -p ~/.claude/skills/MENTIS
+cp SKILL.md ~/.claude/skills/MENTIS/
 ```
 
-Manual install/update (only the skill file):
+### Install MENTIS into OpenCode
+
 ```bash
-mkdir -p ~/.claude/skills/humanizer
-cp SKILL.md ~/.claude/skills/humanizer/
+mkdir -p ~/.config/opencode/skills/MENTIS
+cp SKILL.md ~/.config/opencode/skills/MENTIS/
 ```
 
-## How to "run" it (Claude Code)
+## How to run it
+
 Invoke the skill:
-- `/humanizer` then paste text
+
+```text
+/mentis
+
+[paste text]
+```
 
 ## Making changes safely
-### Versioning (keep in sync)
-- `SKILL.md` has a `version:` field in its YAML frontmatter.
-- `README.md` has a "Version History" section.
 
-If you bump the version, update both.
+### Versioning
+
+- `SKILL.md` has a `version:` field in its YAML front matter.
+- `README.md` has a version history section.
+- If you bump the version in `SKILL.md`, update `README.md` as well.
 
 ### Editing `SKILL.md`
-- Preserve valid YAML frontmatter formatting and indentation.
-- Keep the pattern numbering stable unless you're intentionally re-numbering (since the README table and examples reference the same numbering).
+
+- Preserve valid YAML front matter formatting and indentation.
+- Keep the application name as `MENTIS`.
+- Keep citation and academic integrity rules intact.
+- Do not add fake citation, detector-bypass, or plagiarism-concealment behavior.
+- If adding a new mode or workflow, document it in `README.md`.
 
 ### Documenting non-obvious fixes
-If you change the prompt to handle a tricky failure mode (e.g., a repeated mis-edit or an unexpected tone shift), add a short note to `README.md`'s version history describing what was fixed and why.
 
----
+If you change the prompt to handle a tricky failure mode, add a short note to `README.md` version history describing what changed and why.
 
 ## Copyright
 
-Copyright (c) 2025 MENTISERA (SMC-PRIVATE) Limited. All rights reserved.
+Copyright (c) 2026 MENTISERA (SMC-PRIVATE) Limited. All rights reserved.
