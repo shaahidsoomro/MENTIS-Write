@@ -1,4 +1,14 @@
 ---
+Legal & License
+----------------
+All rights reserved under the MIT License.
+This software and all related intellectual property are protected under Pakistani laws.
+
+- Designed, developed, and distributed by Mentisera Research Division
+- Contact: hello@mnetisera.pk
+- Website: write.mentisera.pk
+
+---
 name: MENTIS-Write
 version: 1
 description: |
